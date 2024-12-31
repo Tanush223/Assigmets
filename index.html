@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+
+</head>
+<body>
+    <section class="home" id="home">
+        <div class="left" id="left">
+            <label for="title">TITLE</label>
+            <textarea id="title" name="title" rows="3" cols="60"></textarea>
+            <br>
+            <label for="note">NOTE</label>
+            <textarea id="note" name="note" rows="7" cols="60"></textarea>
+            <br>
+            <div id="elert"></div>
+            <br>
+            <button id="submit" class="submit" onclick="val()">submit</button>
+            
+        </div>
+        <div class="right" id="right">
+            
+        </div>
+    </section>
+    <script>
+        let t = document.getElementById("title").value
+        let n = document.getElementById('note').value
+        
+        val=()=>{
+            let t = document.getElementById("title").value
+            let n = document.getElementById('note').value
+            let e = document.getElementById('elert')
+            if(t === ""|| n==="" ){
+             e.innerHTML="<h5 style='color:red'>INPUTS ARE EMPTY</h3>"
+                setTimeout(()=>{
+                   e.innerHTML=""
+                   console.log("clear")
+                },1000)
+            }
+            else{
+                upend(t,n)
+            }
+        }
+        upend=(title,note)=>{
+            let store={}
+            
+            
+            let noteDiv =document.createElement("div");
+            noteDiv.className="note-item"
+
+            let titlE = document.createElement('h3');
+            titlE.textContent=title
+
+            let notE = document.createElement('p');
+            notE.textContent=note
+
+            noteDiv.appendChild(titlE)
+            noteDiv.appendChild(notE)
+
+            const rightsec= document.getElementById("right")
+            rightsec.appendChild(noteDiv);
+            
+            document.getElementById("title").value="";
+            document.getElementById("note").value="";
+
+
+        }
+    </script>
+</body>
+</html>
